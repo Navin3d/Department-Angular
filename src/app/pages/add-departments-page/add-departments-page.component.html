@@ -3,7 +3,7 @@
     <app-navbar-component></app-navbar-component>
 
     <div id="container">
-        <div class='formDiv'>
+        <form class='formDiv' [formGroup]="postDepartmentForm" (ngSubmit)="handleSubmit()" method="POST">
             <div class='formFieldBanner'>
                 <h3>Create Department</h3>
             </div>
@@ -13,13 +13,13 @@
                         <tr>
                             <td><label>Department Name:</label></td>
                             <td><input class="input-field" type="text" placeholder="Department Name"
-                                    name="departmentName"></td>
+                                    name="name" formControlName="name"></td>
                         </tr>
 
                         <tr>
                             <td><label>Is Regular:</label></td>
                             <td>
-                                <select name="isRegular" id="isRegular">
+                                <select name="isRegular" formControlName="isRegular" id="isRegular">
                                     <option value="R">Regular</option>
                                     <option value="S">Self</option>
                                 </select>
@@ -28,22 +28,21 @@
 
                         <tr>
                             <td><label>HOD:</label></td>
-                            <td><input class="input-field" type="text" placeholder="HOD" name="hod"></td>
+                            <td><input class="input-field" type="text" placeholder="HOD" name="creatorName" formControlName="creatorName"></td>
                         </tr>
 
                         <tr>
                             <td></td>
                             <td>
                                 <input type="button" value="Cancel" class="save"
-                                    onClick="location.href='ListDepartments.html'" />
-                                <input type="submit" value="Save" class="save"
-                                    onClick="location.href='ListDepartments.html'" />
+                                    onClick="location.href='/department/list'" />
+                                <input type="submit" value="Save" class="save" />
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 <app-footer-component></app-footer-component>

@@ -7,23 +7,28 @@
             <div class='formFieldBanner'>
                 <h3>Add Employee</h3>
             </div>
-            <form class='formField' [formGroup]="postEmployee" ngSubmit method="POST">
+            <form class='formField' [formGroup]="postEmployee" (ngSubmit)="handleSubmit()" method="POST">
+                <input class="input-field" type="number" placeholder="First Name" name="employeeId"
+                                formControlName="employeeId" hidden>
                 <table>
                     <tbody>
+                
                         <tr>
                             <td><label>First Name:</label></td>
-                            <td><input class="input-field" type="text" placeholder="First Name" name="firstName"></td>
+                            <td><input class="input-field" type="text" placeholder="First Name" name="firstName"
+                                    formControlName="firstName"></td>
                         </tr>
 
                         <tr>
                             <td><label>Last Name:</label></td>
-                            <td><input class="input-field" type="text" placeholder="Last Name" name="lastName"></td>
+                            <td><input class="input-field" type="text" placeholder="Last Name" name="lastName"
+                                    formControlName="lastName"></td>
                         </tr>
 
                         <tr>
                             <td><label>Gender:</label></td>
                             <td>
-                                <select name="gender" id="gender">
+                                <select name="gender" formControlName="gender" id="gender">
                                     <option value="M">Male</option>
                                     <option value="F">Female</option>
                                 </select>
@@ -32,34 +37,39 @@
 
                         <tr>
                             <td><label>Age:</label></td>
-                            <td><input class="input-field" type="text" placeholder="Age" name="age"></td>
+                            <td><input class="input-field" type="text" placeholder="Age" name="age"
+                                    formControlName="age"></td>
                         </tr>
 
                         <tr>
                             <td><label>Email:</label></td>
-                            <td><input class="input-field" type="text" placeholder="Email" name="email"></td>
+                            <td><input class="input-field" type="text" placeholder="Email" name="email"
+                                    formControlName="email"></td>
                         </tr>
 
                         <tr>
                             <td><label>Phone Number:</label></td>
-                            <td><input class="input-field" type="text" placeholder="Phone Number" name="phoneNumber">
+                            <td><input class="input-field" type="text" placeholder="Phone Number" name="phoneNumber"
+                                    formControlName="phoneNumber">
                             </td>
                         </tr>
 
                         <tr>
                             <td><label>Hire Date:</label></td>
-                            <td><input class="input-field" type="text" placeholder="Hire Date" name="hireDate"></td>
+                            <td><input class="input-field" type="date" placeholder="Hire Date" name="hireDate"
+                                    formControlName="hireDate"></td>
                         </tr>
 
                         <tr>
                             <td><label>Salary:</label></td>
-                            <td><input class="input-field" type="text" placeholder="Salary" name="salary"></td>
+                            <td><input class="input-field" type="text" placeholder="Salary" name="salary"
+                                    formControlName="salary"></td>
                         </tr>
 
                         <tr>
                             <td><label>Department:</label></td>
                             <td>
-                                <select name="department" id="department">
+                                <select name="department" formControlName="departmentId" id="department">
                                     <option value="1">Physics</option>
                                     <option value="2">Chemistry</option>
                                     <option value="3">Maths</option>
@@ -70,10 +80,8 @@
                         <tr>
                             <td></td>
                             <td>
-                                <input type="button" value="Cancel" class="save"
-                                    onClick="location.href='ListEmployees.html'" />
-                                <input type="submit" value="Save" class="save"
-                                    onClick="location.href='ListEmployees.html'" />
+                                <input type="button" value="Cancel" class="save" />
+                                <input type="submit" value="Save" class="save" />
                             </td>
                         </tr>
                     </tbody>

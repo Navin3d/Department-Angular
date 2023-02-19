@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { BackendServiceService } from "src/app/services/backend-service.service";
+import { FormBuilder } from '@angular/forms';
+
 
 @Component({
   selector: 'app-add-emplpoyees-page',
@@ -10,29 +12,65 @@ import { BackendServiceService } from "src/app/services/backend-service.service"
 export class AddEmplpoyeesPageComponent implements OnInit {
 
   private employeeId!: number;
-  private idUpdate!: boolean;
-  private employee!: any;
+  private isUpdate!: boolean;
+  employee!: any;
 
-  constructor(private route: ActivatedRoute, private backendService: BackendServiceService) {}
+  postEmployee = this.formBuilder.group({
+    firstName: "",
+    lastName: "",
+    gender: "M",
+    age: 10,
+    email: "",
+    phoneNumber: "",
+    hireDate: new Date(),
+    salary: 0,
+    createdBy: "ADMIN",
+    departmentId: "4",
+  });
+
+  constructor(private route: ActivatedRoute, private backendService: BackendServiceService, private formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
     this.route.url.subscribe((path) => {
       console.log(path[1].path);
-      if(path[1].path == "update") {
-        this.idUpdate = true;
+      if (path[1].path == "update") {
+        this.isUpdate = true;
         this.reloadData();
+        this.postEmployee.setValue({
+          firstName: this.employee.firstName,
+          lastName: this.employee.lastName,
+          gender: this.employee.gender,
+          age: this.employee.age,
+          email: this.employee.email,
+          phoneNumber: this.employee.phoneNumber,
+          hireDate: this.employee.hireDate,
+          salary: this.employee.salary,
+          createdBy: this.employee.createdBy,
+          departmentId: this.employee.departmentId,
+        });
       } else {
-        this.idUpdate = false;
+        this.isUpdate = false;
       }
     });
     this.route.params.subscribe((params: Params) => {
       this.employeeId = +params["id"];
     });
-    console.log(this.idUpdate + " - " + this.employeeId);
+    console.log(this.isUpdate + " - " + this.employeeId);
   }
 
   reloadData(): void {
     this.employee = this.backendService.getEmployees(this.employeeId);
+  }
+
+  handleSubmit(): void {
+    console.log(this.postEmployee.value);
+    if(!this.isUpdate) {
+      const isCreated = this.backendService.postEmployees(this.postEmployee.value);
+      isCreated && this.router.navigateByUrl("/department/list");
+    } else {
+      const isCreated = this.backendService.putEmployees(this.employeeId, this.postEmployee.value);
+      isCreated && this.router.navigateByUrl("/department/list");
+    }
   }
 
 }
