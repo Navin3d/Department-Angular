@@ -1,0 +1,85 @@
+<div class="backTopNav">
+
+    <app-navbar-component></app-navbar-component>
+
+    <div id="container">
+        <div class='formDiv'>
+            <div class='formFieldBanner'>
+                <h3>Add Employee</h3>
+            </div>
+            <form class='formField' [formGroup]="postEmployee" ngSubmit method="POST">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td><label>First Name:</label></td>
+                            <td><input class="input-field" type="text" placeholder="First Name" name="firstName"></td>
+                        </tr>
+
+                        <tr>
+                            <td><label>Last Name:</label></td>
+                            <td><input class="input-field" type="text" placeholder="Last Name" name="lastName"></td>
+                        </tr>
+
+                        <tr>
+                            <td><label>Gender:</label></td>
+                            <td>
+                                <select name="gender" id="gender">
+                                    <option value="M">Male</option>
+                                    <option value="F">Female</option>
+                                </select>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><label>Age:</label></td>
+                            <td><input class="input-field" type="text" placeholder="Age" name="age"></td>
+                        </tr>
+
+                        <tr>
+                            <td><label>Email:</label></td>
+                            <td><input class="input-field" type="text" placeholder="Email" name="email"></td>
+                        </tr>
+
+                        <tr>
+                            <td><label>Phone Number:</label></td>
+                            <td><input class="input-field" type="text" placeholder="Phone Number" name="phoneNumber">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><label>Hire Date:</label></td>
+                            <td><input class="input-field" type="text" placeholder="Hire Date" name="hireDate"></td>
+                        </tr>
+
+                        <tr>
+                            <td><label>Salary:</label></td>
+                            <td><input class="input-field" type="text" placeholder="Salary" name="salary"></td>
+                        </tr>
+
+                        <tr>
+                            <td><label>Department:</label></td>
+                            <td>
+                                <select name="department" id="department">
+                                    <option value="1">Physics</option>
+                                    <option value="2">Chemistry</option>
+                                    <option value="3">Maths</option>
+                                    <option value="4">CS</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <input type="button" value="Cancel" class="save"
+                                    onClick="location.href='ListEmployees.html'" />
+                                <input type="submit" value="Save" class="save"
+                                    onClick="location.href='ListEmployees.html'" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+<app-footer-component></app-footer-component>

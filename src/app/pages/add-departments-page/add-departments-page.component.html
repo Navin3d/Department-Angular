@@ -1,0 +1,49 @@
+<div class="backTopNav">
+
+    <app-navbar-component></app-navbar-component>
+
+    <div id="container">
+        <div class='formDiv'>
+            <div class='formFieldBanner'>
+                <h3>Create Department</h3>
+            </div>
+            <div class='formField'>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td><label>Department Name:</label></td>
+                            <td><input class="input-field" type="text" placeholder="Department Name"
+                                    name="departmentName"></td>
+                        </tr>
+
+                        <tr>
+                            <td><label>Is Regular:</label></td>
+                            <td>
+                                <select name="isRegular" id="isRegular">
+                                    <option value="R">Regular</option>
+                                    <option value="S">Self</option>
+                                </select>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td><label>HOD:</label></td>
+                            <td><input class="input-field" type="text" placeholder="HOD" name="hod"></td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td>
+                                <input type="button" value="Cancel" class="save"
+                                    onClick="location.href='ListDepartments.html'" />
+                                <input type="submit" value="Save" class="save"
+                                    onClick="location.href='ListDepartments.html'" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer-component></app-footer-component>
